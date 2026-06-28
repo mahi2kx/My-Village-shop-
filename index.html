@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laxmi Kiranam</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- GOOGLE FONT -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<header>
+    <div class="header-top">
+        <h1>🛒 Laxmi Kiranam</h1>
+        <p>Village Smart Shop</p>
+    </div>
+
+    <nav>
+        <a href="#wines">🍺 Wines</a>
+        <a href="#drinks">🥤 Drinks</a>
+        <a href="#chicken">🍗 Chicken</a>
+
+        <a href="#" onclick="openCart()">
+            🛒 Cart (<span id="cart-count">0</span>)
+        </a>
+
+       <a href="#" onclick="openAdmin()">Admin</a>
+       <button onclick="logoutAdmin()" id="logout-btn" style="display:none;">
+    Logout
+</button>
+    </nav> 
+</header>
+
+<!-- HERO -->
+<section class="hero">
+
+    <div class="hero-left">
+
+        <h1>Laxmi Kiranam</h1>
+
+        <p class="tag">Village Smart Shop</p>
+
+        <p class="desc">
+            <span class="wine">Wines 🍺</span> | 
+            <span class="drink">Cool Drinks 🥤</span> | 
+            <span class="highlight">Chicken 🍗</span>
+        </p>
+
+        <p class="sub">
+            Online chusi direct ga shop ki vachi teesukondi 🔥
+        </p>
+
+        <div class="hero-right">
+            <button onclick="scrollToSection('wines')">Wines</button>
+            <button onclick="scrollToSection('drinks')">Cool Drinks</button>
+            <button class="chicken-btn" onclick="scrollToSection('chicken')">Chicken</button>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- WINES -->
+<section id="wines" class="category-section">
+    <div class="section-header">
+        <h2>🍺 Wines</h2>
+        <p>Premium wines available</p>
+    </div>
+
+    <div id="wines-grid" class="product-grid"></div>
+</section>
+
+<!-- DRINKS -->
+<section id="drinks" class="category-section">
+    <div class="section-header">
+        <h2>🥤 Cool Drinks</h2>
+        <p>Refreshing drinks for you</p>
+    </div>
+
+    <div id="cool-drinks-grid" class="product-grid"></div>
+</section>
+
+<!-- CHICKEN -->
+<section id="chicken" class="category-section">
+    <div class="section-header">
+        <h2>🍗 Chicken</h2>
+        <p>Fresh chicken available</p>
+    </div>
+
+    <div id="chicken-grid" class="product-grid"></div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <a href="tel:9701124262" class="call-btn">
+    📞 Call
+</a>
+
+<a href="https://wa.me/919701124262" class="whatsapp-btn">
+    💬 WhatsApp
+</a>
+</a>
+</footer>
+
+<!-- CART MODAL -->
+<div id="cart-modal" class="cart-modal">
+    <div class="cart-box">
+        <h2>🛒 Your Cart</h2>
+
+        <div id="cart-items"></div>
+
+        <h3 id="cart-total">Total: ₹0</h3>
+
+        <button onclick="closeCart()">Close</button>
+    </div>
+</div>
+
+<!-- JS -->
+<script src="script.js"></script>
+
+<script>
+function scrollToSection(id) {
+    document.getElementById(id).scrollIntoView({
+        behavior: "smooth"
+    });
+}
+</script>
+<!-- Firebase CDN -->
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+<script>
+const firebaseConfig = {
+  projectId: "laxmi-kiranam-shop",
+  storageBucket: "laxmi-kiranam-shop.firebasestorage.app",
+  messagingSenderId: "695598866018",
+  appId: "1:695598866018:web:433dabe183dca629db3b3b",
+  measurementId: "G-DDE9BGDORP"
+};
+
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+
+
+</script>
+<div id="products-container" class="products-container"></div>
+</body>
+</html>
